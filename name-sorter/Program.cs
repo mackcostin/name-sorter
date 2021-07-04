@@ -12,18 +12,25 @@ namespace name_sorter
 
         static void Main(string[] args)
         {
-            Console.WriteLine(args[0]);
-            List<Person> sortedPeople = new List<Person>();
-            List<string> fileLines = ReadFile(args[0]);
-
-            if (fileLines != null)
+            if (args[0] == null)
             {
-                sortedPeople = CreateSortedList(fileLines);
+                Console.WriteLine("Must provide path as arguments when running Name Sorter");
             }
-
-            if (sortedPeople != null)
+            else
             {
-                CreateTextFile(sortedPeople, args[0]);
+                Console.WriteLine(args[0]);
+                List<Person> sortedPeople = new List<Person>();
+                List<string> fileLines = ReadFile(args[0]);
+
+                if (fileLines != null)
+                {
+                    sortedPeople = CreateSortedList(fileLines);
+                }
+
+                if (sortedPeople != null)
+                {
+                    CreateTextFile(sortedPeople, args[0]);
+                }
             }
         }
 
